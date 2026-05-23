@@ -1,0 +1,113 @@
+
+<h2 class="sr-only">Sales analytics dashboard — 8 key insights from order data</h2>
+<style>
+.dash{padding:1rem 0;font-family:var(--font-sans)}
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px 16px}
+.metric-label{font-size:12px;color:var(--color-text-secondary);margin:0 0 4px}
+.metric-value{font-size:22px;font-weight:500;color:var(--color-text-primary);margin:0}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin:2px 0 0}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.chart-box{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px}
+.chart-box.full{grid-column:1/-1}
+.chart-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 10px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;font-size:11px;color:var(--color-text-secondary)}
+.legend span{display:flex;align-items:center;gap:4px}
+.lsq{width:9px;height:9px;border-radius:2px;display:inline-block}
+.insight{background:var(--color-background-secondary);border-left:3px solid #378ADD;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:10px 14px;margin-bottom:8px;font-size:13px;color:var(--color-text-primary)}
+.sec-label{font-size:12px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.06em;margin:1rem 0 10px}
+</style>
+<div class="dash">
+<div class="metric-grid">
+  <div class="metric"><p class="metric-label">Total orders</p><p class="metric-value">1,200</p><p class="metric-sub">2023 – 2025</p></div>
+  <div class="metric"><p class="metric-label">Total revenue</p><p class="metric-value">$1.26M</p><p class="metric-sub">Avg. order $356</p></div>
+  <div class="metric"><p class="metric-label">Cancellation rate</p><p class="metric-value" style="color:#E24B4A">20.8%</p><p class="metric-sub">250 cancelled orders</p></div>
+  <div class="metric"><p class="metric-label">Delivery rate</p><p class="metric-value" style="color:#639922">19.2%</p><p class="metric-sub">231 delivered orders</p></div>
+</div>
+
+<div class="chart-row">
+  <div class="chart-box">
+    <p class="chart-title">Insight 1 — Revenue by product</p>
+    <div class="legend">
+      <span><span class="lsq" style="background:#3266ad"></span>Chair $195.6K</span>
+      <span><span class="lsq" style="background:#5a9fd4"></span>Printer $195.6K</span>
+      <span><span class="lsq" style="background:#73a857"></span>Laptop $192.1K</span>
+      <span><span class="lsq" style="background:#e09b2c"></span>Others</span>
+    </div>
+    <div style="position:relative;width:100%;height:210px"><canvas id="c1" role="img" aria-label="Revenue by product — Chair and Printer lead">Chair 195620, Printer 195612, Laptop 192126, Tablet 186568, Monitor 175651, Desk 167459, Phone 151722</canvas></div>
+  </div>
+  <div class="chart-box">
+    <p class="chart-title">Insight 2 — Order status breakdown</p>
+    <div class="legend">
+      <span><span class="lsq" style="background:#E24B4A"></span>Cancelled 250</span>
+      <span><span class="lsq" style="background:#EF9F27"></span>Returned 247</span>
+      <span><span class="lsq" style="background:#378ADD"></span>Pending 237</span>
+      <span><span class="lsq" style="background:#5a9fd4"></span>Shipped 235</span>
+      <span><span class="lsq" style="background:#639922"></span>Delivered 231</span>
+    </div>
+    <div style="position:relative;width:100%;height:210px"><canvas id="c2" role="img" aria-label="Order status distribution — cancelled is highest">Cancelled 250, Returned 247, Pending 237, Shipped 235, Delivered 231</canvas></div>
+  </div>
+</div>
+
+<div class="chart-row">
+  <div class="chart-box">
+    <p class="chart-title">Insight 3 — Monthly sales trend</p>
+    <div style="position:relative;width:100%;height:195px"><canvas id="c3" role="img" aria-label="Monthly sales — June peaks at $170K, November lowest at $75K">Jan 124K, Feb 112K, Mar 123K, Apr 109K, May 135K, Jun 170K, Jul 85K, Aug 86K, Sep 69K, Oct 89K, Nov 75K, Dec 82K</canvas></div>
+  </div>
+  <div class="chart-box">
+    <p class="chart-title">Insight 4 — Referral sources</p>
+    <div class="legend">
+      <span><span class="lsq" style="background:#E4405F"></span>Instagram 259</span>
+      <span><span class="lsq" style="background:#EF9F27"></span>Email 250</span>
+      <span><span class="lsq" style="background:#378ADD"></span>Google 241</span>
+      <span><span class="lsq" style="background:#3266ad"></span>Facebook 228</span>
+      <span><span class="lsq" style="background:#73726c"></span>Referral 222</span>
+    </div>
+    <div style="position:relative;width:100%;height:195px"><canvas id="c4" role="img" aria-label="Referral sources — Instagram leads with 259">Instagram 259, Email 250, Google 241, Facebook 228, Referral 222</canvas></div>
+  </div>
+</div>
+
+<div class="chart-row">
+  <div class="chart-box">
+    <p class="chart-title">Insight 5 — Payment methods</p>
+    <div style="position:relative;width:100%;height:185px"><canvas id="c5" role="img" aria-label="Payment methods — Online is most used">Online 258, Cash 246, Credit Card 234, Debit Card 232, Gift Card 230</canvas></div>
+  </div>
+  <div class="chart-box">
+    <p class="chart-title">Insight 6 — Coupon usage</p>
+    <div class="legend">
+      <span><span class="lsq" style="background:#378ADD"></span>FREESHIP 313</span>
+      <span><span class="lsq" style="background:#73726c"></span>No coupon 309</span>
+      <span><span class="lsq" style="background:#EF9F27"></span>WINTER15 292</span>
+      <span><span class="lsq" style="background:#639922"></span>SAVE10 286</span>
+    </div>
+    <div style="position:relative;width:100%;height:185px"><canvas id="c6" role="img" aria-label="Coupon usage — FREESHIP is most popular">FREESHIP 313, No coupon 309, WINTER15 292, SAVE10 286</canvas></div>
+  </div>
+</div>
+
+<div class="chart-row">
+  <div class="chart-box full">
+    <p class="chart-title">Insight 7 — Year-over-year revenue decline</p>
+    <div style="position:relative;width:100%;height:150px"><canvas id="c7" role="img" aria-label="Annual revenue declining from $552K in 2023 to $480K in 2024; 2025 is partial">2023: $552K, 2024: $480K, 2025 (partial): $231K</canvas></div>
+  </div>
+</div>
+
+<p class="sec-label">Insight 8 — Strategic summary</p>
+<div class="insight"><i class="ti ti-trophy" aria-hidden="true" style="font-size:14px;margin-right:6px;color:#378ADD"></i><strong>Top products:</strong> Chair & Printer are nearly tied at $195.6K each — both deserve prioritised marketing.</div>
+<div class="insight"><i class="ti ti-alert-triangle" aria-hidden="true" style="font-size:14px;margin-right:6px;color:#E24B4A"></i><strong>Order health crisis:</strong> Cancellations (20.8%) + Returns (20.6%) = 41.4% of orders never complete — needs urgent investigation.</div>
+<div class="insight"><i class="ti ti-calendar" aria-hidden="true" style="font-size:14px;margin-right:6px;color:#EF9F27"></i><strong>Seasonality:</strong> June is the strongest month ($170K), while Nov–Sep is a sustained slump — run targeted campaigns in the autumn.</div>
+<div class="insight"><i class="ti ti-trending-down" aria-hidden="true" style="font-size:14px;margin-right:6px;color:#E24B4A"></i><strong>Revenue declining:</strong> Down 13% from 2023 to 2024 — identify root causes before the trend deepens.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const dk = matchMedia('(prefers-color-scheme: dark)').matches;
+const gc = dk ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)';
+const tc = dk ? '#aaa' : '#888';
+new Chart(document.getElementById('c1'),{type:'bar',data:{labels:['Chair','Printer','Laptop','Tablet','Monitor','Desk','Phone'],datasets:[{data:[195620,195612,192126,186568,175651,167459,151722],backgroundColor:['#3266ad','#5a9fd4','#73a857','#e09b2c','#985dd4','#d45d5d','#4cbcb0'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc,font:{size:11}},grid:{display:false}},y:{ticks:{color:tc,font:{size:10},callback:v=>'$'+(v/1000).toFixed(0)+'K'},grid:{color:gc}}}}});
+new Chart(document.getElementById('c2'),{type:'doughnut',data:{labels:['Cancelled','Returned','Pending','Shipped','Delivered'],datasets:[{data:[250,247,237,235,231],backgroundColor:['#E24B4A','#EF9F27','#378ADD','#5a9fd4','#639922'],borderWidth:2,borderColor:dk?'#1a1a1a':'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},cutout:'60%'}});
+new Chart(document.getElementById('c3'),{type:'line',data:{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],datasets:[{data:[124313,112344,123840,109186,135142,170616,85784,86343,69321,89834,75493,82540],borderColor:'#378ADD',backgroundColor:'rgba(55,138,221,0.1)',fill:true,tension:0.4,pointRadius:4,pointBackgroundColor:'#378ADD',borderWidth:2,pointBorderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc,font:{size:11},autoSkip:false,maxRotation:0},grid:{display:false}},y:{ticks:{color:tc,font:{size:10},callback:v=>'$'+(v/1000).toFixed(0)+'K'},grid:{color:gc}}}}});
+new Chart(document.getElementById('c4'),{type:'bar',data:{labels:['Instagram','Email','Google','Facebook','Referral'],datasets:[{data:[259,250,241,228,222],backgroundColor:['#E4405F','#EF9F27','#378ADD','#3266ad','#73726c'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc,font:{size:11}},grid:{display:false}},y:{ticks:{color:tc,font:{size:10}},grid:{color:gc},min:200}}}});
+new Chart(document.getElementById('c5'),{type:'bar',data:{labels:['Online','Cash','Credit Card','Debit Card','Gift Card'],datasets:[{data:[258,246,234,232,230],backgroundColor:['#378ADD','#73726c','#985dd4','#4cbcb0','#e09b2c'],borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc,font:{size:10}},grid:{color:gc},min:210},y:{ticks:{color:tc,font:{size:11}},grid:{display:false}}}}});
+new Chart(document.getElementById('c6'),{type:'doughnut',data:{labels:['FREESHIP','No coupon','WINTER15','SAVE10'],datasets:[{data:[313,309,292,286],backgroundColor:['#378ADD','#73726c','#EF9F27','#639922'],borderWidth:2,borderColor:dk?'#1a1a1a':'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},cutout:'55%'}});
+new Chart(document.getElementById('c7'),{type:'bar',data:{labels:['2023 (full year)','2024 (full year)','2025 (partial)'],datasets:[{data:[552643,480235,231882],backgroundColor:['#378ADD','#5a9fd4','#b5d4f4'],borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc,font:{size:12}},grid:{display:false}},y:{ticks:{color:tc,font:{size:10},callback:v=>'$'+(v/1000).toFixed(0)+'K'},grid:{color:gc}}}}});
+</script>
